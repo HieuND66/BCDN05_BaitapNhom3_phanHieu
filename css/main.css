@@ -164,6 +164,20 @@ section {
   position: relative;
 }
 
+.header .icons .qtyCart {
+  position: absolute;
+  top: -16px;
+  left: 56px;
+}
+
+.header .icons .qtyCart .qtyProduc {
+  padding: 5px 10px;
+  color: black;
+  background-color: #fae100;
+  border-radius: 50%;
+  font-size: 16px;
+}
+
 .header .icons .cart {
   position: absolute;
   top: 48px;

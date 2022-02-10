@@ -2,7 +2,24 @@
 
 // import Products from "../models/ad-Products.js"
 hienThiDanhSachGioHang()
+hienThiSoLuongSanPham()
+// var cartItem = {
+//     product: {
+//         id: 1,
+//         name: SamSung,
+//         image: abc,
+//         price: 10,
+//         qty: 1,
+//         priceTotal(){
+//             let priceTT = this.price * this.qty
+//             return priceTT
+//         }
+//     },
+//     qtyTotal: 1
+//  }
 
+// Số lượng sản phẳm
+let qtyProduct = 0
 
 
 
@@ -109,6 +126,22 @@ function hienThiDanhSachGioHang() {
     document.getElementById("cart").innerHTML = content;
 }
 
+// Hiển thị số lượng sản phẩm
+function hienThiSoLuongSanPham(){
+    // lấy danh sach sp giỏ hang
+    var danhSachSanPham = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+    content = "";
+    console.log(danhSachSanPham.length);
+    content = danhSachSanPham.length
+    console.log(content);
+    if(danhSachSanPham.length > 0){
+        content = danhSachSanPham.length
+    }
+    else{
+        content = 0
+    }
+    document.getElementById("qtyProduc").innerHTML = content
+}
 
 // Xử lý giỏ hàng
 
@@ -151,33 +184,10 @@ function addToCart(id) {
         `
     })
     document.getElementById("cart").innerHTML = content;
+    hienThiSoLuongSanPham()
 }
 window.addToCart = addToCart
-// function chuyenDoiTuongItemSangHTML(mangSP) {
-//     listProduct = mangSP;
-//     // console.log(listProduct);
-//     var content = "";
-//     mangSP.map(function(sp, index){
-//         content += `
-//         <div class="cart_item">
-//         <div class="picture_item">
-//             <img src="./images/product-1.jpg" alt="">
-//         </div>
-//         <p class="name_item">Iphone5</p>
-//         <div class="price_item">
-//             <span class="giaGoc">5000</span>
-//             <span class="giaBan">4000</span>
-//         </div>
-//         <input type="number" class="soLuong_item" value="1">
-//         <p class="tongTien">4000</p>
-//         <i class="far fa-trash-alt"></i>
-//     </div>
-//         `
-//     })
-//     document.getElementById("productList").innerHTML = content;
-// }
 
-// Delete Cart
 
 
 function deleteCart(id) {
@@ -187,18 +197,7 @@ function deleteCart(id) {
     danhSachSanPham = danhSachSanPham.filter(item => item.id != id)
     setLocalStorage(danhSachSanPham)
     hienThiDanhSachGioHang()
-    // let cartItem = document.querySelectorAll(".cart_item")
-    // // console.log(cartItem);
-    // for (var i = 0; i < cartItem.length; i++) {
-    //     var productSelect = document.querySelectorAll(".cart_item i")
-    //     // console.log(productDelete);
-    //     productSelect[i].addEventListener('click', function (event) {
-    //         var cartDelete = event.target
-    //         console.log(cartDelete);
-    //         var cartParent = cartDelete.parentElement
-    //         console.log(cartParent);
-    //         console.log(typeof danhSachSanPham);
-    //     })
-    // }
+    hienThiSoLuongSanPham()
+
 }
 window.deleteCart = deleteCart
