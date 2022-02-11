@@ -49,7 +49,7 @@ function getData() {
         })
         .then(function (result) {
             // console.log(result.data);
-            hienThiDS(result.data)
+            hienThiDS(result.data);
         })
         .catch(function (error) {
             console.log(error);
@@ -81,6 +81,12 @@ function hienThiDS(mangSP) {
                     <p>backCamera: ${sp.backCamera}</p>
                     <p>frontCamera: ${sp.frontCamera}</p>
                     <p>${sp.desc}</p>
+                    <div class="qty__box">
+                    <button><</button>
+                    <span>5</span>
+                    <button>></button>
+                    </div>
+                    
                 </div>
                 <div class="stars">
                     <i class="fas fa-star"></i>
@@ -95,7 +101,10 @@ function hienThiDS(mangSP) {
     })
     document.getElementById("productList").innerHTML = content;
 }
+// Hiện thị số lượng trên sp
+function soLuongTrenSP(){
 
+}
 
 /// CART--------------------
 
